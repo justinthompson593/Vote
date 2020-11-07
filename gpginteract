@@ -1,0 +1,59 @@
+#!/bin/bash
+
+if [ $1 ]; then
+	echo
+	echo "What would you like to do?"
+	echo "1. encrypt and sign $1 for justinthompson593@gmail.com"
+	echo "2. encrypt and sign $1 (you will be asked for a recipient)"
+	echo "3. symmetric encrypt and sign $1"
+	echo "4. decrypt $1, print to terminal"
+	echo "5. decrypt $1, save as file"
+	echo
+	read usrNumber
+
+	if [ $usrNumber -eq "1" ]; then
+		gpg --encrypt --sign --armor -r justinthompson593@gmail.com $1
+	elif [ $usrNumber -eq "2" ]; then
+		gpg --encrypt --sign --armor $1
+	elif [ $usrNumber -eq "3" ]; then
+		gpg --sign --symmetric --cipher-algo AES256 --armor $1
+	elif [ $usrNumber -eq "4" ]; then
+		gpg --batch -d $1
+	elif [ $usrNumber -eq "5" ]; then
+		echo "Enter name of new decrypted file:"
+		read fileName
+		gpg -d $1 > $fileName
+	elif [ $usrNumber -eq "6" ]; then
+		gpg --encrypt --detach-sign --armor -r func_of_c1a4c17@voter.gov $1
+	else
+		echo "You didn't choose 1 or 2"
+	fi
+else
+	echo
+	echo "What do you want to do?"
+	echo "1. [default] batch decrypt PGP message in clipboard"
+	echo "2. type data and encrypt it"
+	echo "3. encrypt and detached sign clipboard for Voter C1A4"
+	read usrClip
+	if [ "$usrClip" == "2" ]; then
+		echo ""
+		echo "Give a filename for your raw data to be encrypted."
+		echo "It will open in nano." 
+		echo "Write your data, save (Ctrl+O) and exit (Ctrl+X) when finished."
+		read fName
+		nano $fName
+		gpg --sign -ea $fName && rm $fName && echo && echo "Encryption successful."
+	elif [ "$usrClip" == "3" ]; then
+		pbpaste > gpginteract_tmp.txt
+		gpg --encrypt --detach-sign --armor -r func_of_c1a4c17@voter.gov gpginteract_tmp.txt
+		rm gpginteract_tmp.txt
+	else
+		gpgdecpaste
+		echo
+	fi
+	
+fi
+
+
+
+
