@@ -1,0 +1,24 @@
+#!/bin/bash
+
+your_id="4l93qfj"
+your_gpg_email="justinthompson2112@icloud.com"
+govt_gpg="justinthompson593@gmail.com"
+
+git clone https://github.com/justinthompson593/Vote.git
+cd Vote
+git checkout -b $your_id
+echo "Voter record" > voter_record.txt
+echo "# Voter $your_id" > README.md
+echo "" >> README.md
+echo "DOB: 01-Jan-1970" >> README.md
+echo "" >> README.md
+echo "ZIP: 78102" >> README.md
+echo "" >> README.md
+echo "SOC: 1234" >> README.md
+echo "" >> README.md
+
+gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt
+git add -A
+git commit -m "New Registered Voter: $your_id \nVarious info that we'd want public..."
+git push origin $your_id
+
