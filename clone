@@ -1,7 +1,7 @@
 #!/bin/bash
 
 your_id="4l93qfj"
-your_gpg_email="justinthompson2112@icloud.com"
+your_gpg_email="4l93qfj@vote.gov"
 govt_gpg="justinthompson593@gmail.com"
 
 #git clone https://github.com/justinthompson593/Vote.git
