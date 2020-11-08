@@ -1,10 +1,10 @@
 # Voter 4l93qfj
 
 ---
-pub   rsa4096 2020-11-08 [SC] [expires: 2021-11-08]
-      976B 9B8C F394 0511 38A2  64B1 ADDE B679 C53F D59D
-uid           [ultimate] Voter 4l93qfj <4l93qfj@vote.gov>
-sub   rsa4096 2020-11-08 [E] [expires: 2021-11-08]
+pub   rsa3072 2020-11-01 [SC]
+      6950 CAD6 7EC3 B8AA 047F  428E 7ED6 BFC7 19D3 7BB0
+uid           [ultimate] justinthompson2112@icloud.com
+sub   rsa3072 2020-11-01 [E]
 
 ---
 -----BEGIN PGP PUBLIC KEY BLOCK-----

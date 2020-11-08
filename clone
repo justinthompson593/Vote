@@ -27,7 +27,7 @@ echo "$(<publickey.asc)" >> voter_record.txt
 echo "# Voter $your_id" > README.md
 echo "" >> README.md
 echo "---" >> README.md
-echo "$(gpg --fingerprint 4l93qfj@vote.gov)" >> README.md
+echo "$(gpg --fingerprint $your_gpg_email)" >> README.md
 echo "" >> README.md 
 echo "---" >> README.md
 echo "$(<publickey.asc)" >> README.md 
