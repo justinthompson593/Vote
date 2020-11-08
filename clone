@@ -27,6 +27,8 @@ echo "$(<publickey.asc)" >> voter_record.txt
 echo "# Voter $your_id" > README.md
 echo "" >> README.md
 echo "---" >> README.md
+echo "$(gpg --fingerprint 4l93qfj@vote.gov)" >> README.md
+echo "---" >> README.md
 echo "pub   rsa4096 2020-11-08 [SC] [expires: 2021-11-08]" >> README.md
 echo "" >> README.md
 echo "976B9B8CF394051138A264B1ADDEB679C53FD59D" >> README.md
