@@ -4,20 +4,33 @@ your_id="4l93qfj"
 your_gpg_email="justinthompson2112@icloud.com"
 govt_gpg="justinthompson593@gmail.com"
 
-git clone https://github.com/justinthompson593/Vote.git
-cd Vote
-git checkout -b $your_id
+#git clone https://github.com/justinthompson593/Vote.git
+#cd Vote
+#git checkout -b $your_id
 echo "Voter record" > voter_record.txt
+echo "pub   rsa4096 2020-11-08 [SC] [expires: 2021-11-08]" >> voter_record.txt
+echo "      976B9B8CF394051138A264B1ADDEB679C53FD59D" >> voter_record.txt
+echo "uid                      Voter 4l93qfj <4l93qfj@vote.gov>" >> voter_record.txt
+echo "sub   rsa4096 2020-11-08 [E] [expires: 2021-11-08]" >> voter_record.txt
+echo "">> voter_record.txt
+echo "DOB: 01-Jan-1970" >> voter_record.txt
+echo "" >> voter_record.txt
+echo "ZIP: 78102" >> voter_record.txt
+echo "" >> voter_record.txt
+echo "SOC: 1234" >> voter_record.txt
+echo "" >> voter_record.txt
+echo "Public Key"
+gpg --output tmp.tmp --armor --export $your_gpg_email
+echo "$(<tmp.tmp)" >> voter_record.txt 
+
+
 echo "# Voter $your_id" > README.md
 echo "" >> README.md
-echo "DOB: 01-Jan-1970" >> README.md
-echo "" >> README.md
-echo "ZIP: 78102" >> README.md
-echo "" >> README.md
-echo "SOC: 1234" >> README.md
-echo "" >> README.md
+echo "$(<tmp.tmp)" >> README.md && rm tmp.tmp
 
-gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt
+gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt && rm voter_record.txt
+
+
 git add -A
 git commit -m "New Registered Voter: $your_id \nVarious info that we'd want public..."
 git push origin $your_id
