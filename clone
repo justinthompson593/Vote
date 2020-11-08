@@ -20,8 +20,8 @@ echo "" >> voter_record.txt
 echo "SOC: 1234" >> voter_record.txt
 echo "" >> voter_record.txt
 echo "Public Key"
-gpg --output tmp.tmp --armor --export $your_gpg_email
-echo "$(<tmp.tmp)" >> voter_record.txt 
+gpg --output publickey.asc --armor --export $your_gpg_email
+echo "$(<publickey.asc)" >> voter_record.txt 
 
 
 echo "# Voter $your_id" > README.md
@@ -36,7 +36,7 @@ echo "" >> README.md
 echo "sub   rsa4096 2020-11-08 [E] [expires: 2021-11-08]" >> README.md
 echo "" >> README.md
 echo "---" >> README.md
-echo "$(<tmp.tmp)" >> README.md && rm tmp.tmp
+echo "$(<publickey.asc)" >> README.md 
 
 gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt && rm voter_record.txt
 
