@@ -8,6 +8,10 @@ govt_gpg="justinthompson593@gmail.com"
 #cd Vote
 #git checkout -b $your_id
 echo "Voter record" > voter_record.txt
+echo "" >> voter_record.txt
+echo "Fingerprint" >> voter_record.txt
+echo "$(gpg --fingerprint $your_gpg_email)" >> voter_record.txt
+echo "" >> voter_record.txt
 echo "pub   rsa4096 2020-11-08 [SC] [expires: 2021-11-08]" >> voter_record.txt
 echo "      976B9B8CF394051138A264B1ADDEB679C53FD59D" >> voter_record.txt
 echo "uid                      Voter 4l93qfj <4l93qfj@vote.gov>" >> voter_record.txt
