@@ -4,9 +4,9 @@ your_id="4l93qfj"
 your_gpg_email="4l93qfj@vote.gov"
 govt_gpg="justinthompson593@gmail.com"
 
-#git clone https://github.com/justinthompson593/Vote.git
-#cd Vote
-#git checkout -b $your_id
+git clone https://github.com/justinthompson593/Vote.git
+cd Vote
+git checkout -b $your_id
 echo "Voter record" > voter_record.txt
 echo "" >> voter_record.txt
 echo "Fingerprint" >> voter_record.txt
@@ -36,5 +36,5 @@ gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt && rm vot
 
 git add -A
 git commit -m "New Registered Voter: $your_id \nVarious info that we'd want public..."
-#git push origin $your_id
-git push origin main
+git push origin $your_id
+#git push origin main
