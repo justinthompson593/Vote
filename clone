@@ -36,5 +36,5 @@ gpg --encrypt --armor -r $your_gpg_email -r $govt_gpg voter_record.txt && rm vot
 
 git add -A
 git commit -m "New Registered Voter: $your_id \nVarious info that we'd want public..."
-git push origin $your_id
-
+#git push origin $your_id
+git push origin main
